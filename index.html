@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physio Anatomy 3D</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #07111f;
+            color: white;
+        }
+
+        header {
+            height: 65px;
+            background: #0d1b2a;
+            display: flex;
+            align-items: center;
+            padding: 0 25px;
+            border-bottom: 1px solid #20354d;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 22px;
+        }
+
+        header span {
+            margin-left: 12px;
+            color: #4dd0e1;
+            font-size: 13px;
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 220px 1fr 260px;
+            height: calc(100vh - 65px);
+        }
+
+        .sidebar {
+            background: #0a1625;
+            padding: 20px;
+            border-right: 1px solid #20354d;
+        }
+
+        .sidebar h3 {
+            margin-top: 0;
+            color: #4dd0e1;
+        }
+
+        .button {
+            width: 100%;
+            padding: 12px;
+            margin: 6px 0;
+            background: #10243a;
+            border: 1px solid #24415e;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        .button:hover {
+            background: #183652;
+        }
+
+        .viewer {
+            position: relative;
+            background: radial-gradient(circle, #162b40, #050b13);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .human {
+            font-size: 180px;
+            opacity: 0.8;
+        }
+
+        .viewer-text {
+            position: absolute;
+            bottom: 25px;
+            text-align: center;
+            color: #91a8bd;
+        }
+
+        .right-panel {
+            background: #0a1625;
+            padding: 20px;
+            border-left: 1px solid #20354d;
+        }
+
+        .right-panel h3 {
+            color: #4dd0e1;
+        }
+
+        .info {
+            background: #10243a;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        @media(max-width: 800px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar,
+            .right-panel {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🧍 Physio Anatomy 3D</h1>
+    <span>Human Anatomy Explorer</span>
+</header>
+
+<div class="layout">
+
+    <aside class="sidebar">
+
+        <h3>ANATOMY</h3>
+
+        <button class="button" onclick="selectPart('Bones')">
+            🦴 Bones
+        </button>
+
+        <button class="button" onclick="selectPart('Muscles')">
+            💪 Muscles
+        </button>
+
+        <button class="button" onclick="selectPart('Organs')">
+            🫀 Organs
+        </button>
+
+        <button class="button" onclick="selectPart('Joints')">
+            🦿 Joints
+        </button>
+
+        <h3>REGIONS</h3>
+
+        <button class="button" onclick="selectPart('Head & Neck')">
+            Head & Neck
+        </button>
+
+        <button class="button" onclick="selectPart('Upper Limb')">
+            Upper Limb
+        </button>
+
+        <button class="button" onclick="selectPart('Thorax')">
+            Thorax
+        </button>
+
+        <button class="button" onclick="selectPart('Lower Limb')">
+            Lower Limb
+        </button>
+
+    </aside>
+
+    <main class="viewer">
+
+        <div class="human">
+            🧍
+        </div>
+
+        <div class="viewer-text">
+            3D Human Anatomy Viewer<br>
+            <small>Interactive model will be added here</small>
+        </div>
+
+    </main>
+
+    <aside class="right-panel">
+
+        <h3>SELECTED STRUCTURE</h3>
+
+        <div class="info">
+            <strong id="selected">
+                Nothing selected
+            </strong>
+
+            <p id="description">
+                Select an anatomical category.
+            </p>
+        </div>
+
+        <h3>MOVEMENT</h3>
+
+        <div class="info">
+            <p>Joint</p>
+            <strong id="movement">
+                —
+            </strong>
+        </div>
+
+    </aside>
+
+</div>
+
+<script>
+
+function selectPart(part) {
+
+    document.getElementById("selected").innerText = part;
+
+    document.getElementById("description").innerText =
+        "Anatomical structures belonging to " + part;
+
+    document.getElementById("movement").innerText =
+        "Movement information";
+
+}
+
+</script>
+
+</body>
+</html>
